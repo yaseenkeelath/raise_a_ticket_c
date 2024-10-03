@@ -1,0 +1,196 @@
+<div ng-controller="CreateticketCtrl">
+
+    <!-- navbar -->
+    <section>
+        <div id="background">
+            <nav class="navbar bg-primary navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-white d-flex" style="margin-top:2px" href="#">
+                        <div class="fw-bold">raise</div>
+                        <div>a</div>
+                        <div class="fw-bold">ticket</div>
+                        <span class="mx-2">|</span>
+                        <div>DOTS</div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <!-- Tickets Link -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="login">
+                                    <i class="bi bi-ticket fw-bold"></i> Login
+                                </a>
+                            </li>
+                            <!-- Resources Link -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="signup">
+                                    <i class="bi bi-journal fw-bold"></i> SignUp
+                                </a>
+                            </li>
+                            <!-- User Profile Popup -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="creatTicket">
+                                    <i class="bi bi-journal fw-bold"></i> Create Ticket
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <!-- navbar ends -->
+
+    <style>
+        .main {
+            width: 551px;
+            margin: auto;
+            background-color: rgb(250, 250, 252);
+            height: auto;
+            margin-top: 40px;
+            border-radius: 3px;
+        }
+
+        .shadowhover {
+            transition: all 150ms ease-in-out;
+            border-radius: 8px;
+            box-shadow: 0px 8px 18px rgb(110, 110, 110);
+        }
+
+        .shadowhover:hover {
+            box-shadow: 0px 8px 38px black;
+        }
+
+        /*  .signature {
+            border-radius: 5px;
+            border: 1px solid;
+            height: 600px;
+            width: 500px;
+        }*/
+
+        .editor2 {
+            width: 500px;
+            height: 140px;
+            border: 1px;
+            border-radius: 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .toolbar {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toolbar button {
+            margin-right: 5px;
+        }
+
+        /*extra*/
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .toolbar button {
+            background: none;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            margin-right: 10px;
+            color: white
+        }
+
+        .toolbar button:hover {
+            text-decoration: underline;
+        }
+
+        .editor {
+            width: 100%;
+            height: 138px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            resize: vertical;
+            overflow: auto;
+            outline: none;
+            background: #fff;
+        }
+
+        .robot {
+            border: 1px solid;
+            width: 300px;
+            height: 80px;
+            margin-left: 25px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+    </style>
+
+
+    <div class="main shadowhover " style="background-color: rgb(55, 124, 228);">
+        <div>
+            <p class="word text-center pt-5"
+                style="font-family:inherit; color:rgb(248, 246, 246); font-size: 30px; font-weight: 500; margin-top: 40px;">
+                New Ticket</p>
+        </div>
+        <div class="form">
+            <div class="d-flex justify-content-center">
+                <input type="email" class="form-control my-2" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Email" style="border: 1px ;border-radius: 0; background-color:white;width:500px;">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control my-2" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Subject" style="border: 1px ;border-radius: 0; background-color:white;width:500px; ">
+            </div>
+        </div>
+        <section>
+            <div class="form-group ">
+
+                <!-- <textarea class="form-control mt-1 square-border" style="height:300px"
+                id="exampleFormControlTextarea1" rows="3"></textarea> -->
+
+                <!-- for rich input box -->
+                <div>
+                    <div class="container">
+                        <!-- <label class="mt-3" style="color: black;">Description(Optional)</label> -->
+                        <div class="toolbar mt-3 d-flex justify-content-between"
+                            style="width: 474px; margin-left:34px;">
+                            <button ng-click="execCommand('bold')"><i class="fas fa-bold"></i></button>
+                            <button ng-click="execCommand('italic')"><i class="fas fa-italic"></i></button>
+                            <button ng-click="execCommand('underline')"><i class="fas fa-underline"></i></button>
+                            <button ng-click="execCommand('justifyLeft')"><i class="fas fa-align-left"></i></button>
+                            <button ng-click="execCommand('justifyCenter')"><i class="fas fa-align-center"></i></button>
+                            <button ng-click="execCommand('justifyRight')"><i class="fas fa-align-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="editor2 form-control" contenteditable="true" ng-model="formData.description"></div>
+                    </div>
+                </div>
+                <!-- end of rick box -->
+            </div>
+        </section>
+
+        <div class="my-2">
+            <div class="container" style="margin-left: 22px;">
+                <input style="font-size:13px;" type="file" file-model="myFile" />
+                <!-- <button class="btn btn-secondary" style="height:30px; font-size:11px"
+                    ng-click="uploadFile()">submit file</button> -->
+            </div>
+        </div>
+        <div class="d-flex justify-content-center my-3 ">
+            <button id="button" type="button" class="btn btn-primary "
+                style="border:1px; border-radius:0; width:284px;background-color:rgb(15, 181, 231);color:white; margin-bottom:20px;">Create
+                Ticket</button>
+        </div>
+    </div>
+
+
+
+</div>

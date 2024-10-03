@@ -1,0 +1,286 @@
+<div ng-include="'partial/navbar/navbar.html'"></div>
+<style>
+    .square-border {
+        border: 1px solid;
+        border-radius: 0;
+
+    }
+
+    .shadowhover {
+        box-shadow: 0px 3px white;
+        transition: all 150ms ease-in-out;
+        border-radius: 8px;
+    }
+
+    .shadowhover:hover {
+        box-shadow: 0px 8px 28px black;
+    }
+
+    .requestClicked {
+        margin-top: 30px;
+        transition-delay: 0.10s;
+    }
+
+    .requestNotClicked {
+        margin-top: 20px;
+    }
+
+
+    .editor2 {
+        width: 100%;
+        height: 300px;
+        border: 1px solid;
+        color: black;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+    }
+
+    .toolbar {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .toolbar button {
+        margin-right: 5px;
+    }
+
+    /*extra*/
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .toolbar button {
+        background: none;
+        border: none;
+        font-size: 13px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .toolbar button:hover {
+        text-decoration: underline;
+    }
+
+    .editor {
+        width: 100%;
+        height: 260px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        resize: vertical;
+        overflow: auto;
+        outline: none;
+        background: #fff;
+    }
+</style>
+
+<body>
+    <div style="background-color: rgb(242,243,247); height:120vh">
+        <section id="heading" class="mt-1">
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-2">
+                        <h5 style="color: rgb(102,118,123);">Raise a ticket</h5>
+                    </div>
+                    <div class="col-7"></div>
+                    <div class="col-3">
+                        <!--<button style="background-color: rgb(135,199,30); color:white; height:29px;" type="button"
+                        class="btn btn rounded-pill">
+                        <h5 style="font-size:13px; font-weight:400">Draft saved on 16th jul 11:06 AM <i
+                                class="fa-regular fa-circle-xmark"></i> </h5>
+                    </button>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section ng-controller="RaiseATicketCtrl">
+            <div class="container mt-2" style="height:auto; " id="first_one">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="card shadowhover" style="border: white; ">
+                                <!-- ticket by request checkbox -->
+                                <div>
+                                    <div class="form-check my-4" style="height:38px;">
+                                        <input class="form-check-input" ng-click="requestShow=!requestShow"
+                                            ng-checked="ticket" type="checkbox" id="flexCheckDefault"
+                                            style="margin-top: 15px;">
+                                        <label class="form-check-label" for="flexCheckDefault"
+                                            style="margin-top: 12px;">
+                                            Ticket by request
+                                        </label>
+                                    </div>
+
+                                    <!-- requested by input -->
+                                    <section ng-show="requestShow">
+                                        <label class="mt-3" style="color: black;">Requested by <span
+                                                style="color: red;">*</span></label><br>
+                                        <select class="mt-2" style="width:100%; max-width:355px; height:35px ;"
+                                            ng-model="formData.requestBySend" ng-options="i for i in requestBy">
+                                            <option value="">Select an option</option>
+                                        </select>
+                                        <div class="row">
+                                            <a class="d-flex justify-content-end" style="text-decoration: none;">Add
+                                                User</a>
+                                        </div>
+                                    </section>
+                                    <h1 style="color: black;">{{formData.requestBySend}}</h1>
+
+                                    <!-- mode of request input -->
+                                    <section ng-show="requestShow">
+                                        <label class="mt-3" style="color: black;">Mode of request</label><br>
+                                        <select class=" mb-4" style="width: 355px; max-width:100%; height:35px ; "
+                                            ng-model="firstDropModel" ng-options="i for i in modeOfRequest">
+                                            <option value=""></option>
+                                        </select>
+
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- category block -->
+                        <div class="row shadowhover " style="background-color: white; height:350px; "
+                            ng-class="{'requestClicked':requestShow,'requestNotClicked':!requestShow}">
+                            <section>
+                                <label for="firstDropModel" class="mt-3" style="color: black;">Category</label><br>
+                                <select id="firstDropModel" class="mt-2"
+                                    style="width: 355px; max-width:100%; height:35px" ng-model="formData.category"
+                                    ng-options="i for i in firstdropdown">
+                                    <option value=""></option>
+                                </select>
+                            </section>
+
+
+                            <section>
+                                <label for="secondDropModel" class="mt-2" style="color: black;">Priority</label><br>
+                                <select id="secondDropModel" class="mt-1"
+                                    style="width: 355px; max-width:100%; height:35px" ng-model="formData.Priority"
+                                    ng-options="i for i in secondDropdown">
+                                    <option value=""></option>
+                                </select>
+                            </section>
+
+                            <section>
+                                <label for="thirdDropModel" class="mt-2" style="color: black;">Group</label><br>
+                                <select id="thirdDropModel" class="mt-1"
+                                    style="width: 355px; max-width:100%; height:35px" ng-model="formData.Group"
+                                    ng-options="i for i in thirdDropdown">
+                                    <option value="">DOTS PDC</option>
+                                </select>
+                            </section>
+
+                            <section>
+                                <label for="fourthDropModel" class="mt-2" style="color: black;">Agent</label><br>
+                                <select id="fourthDropModel" class="mt-1 mb-5"
+                                    style="width: 355px; max-width:100%; height:35px" ng-model="formData.Agent"
+                                    ng-options="i for i in fourthDropdown">
+                                    <option value=""></option>
+                                </select>
+                            </section>
+
+                        </div>
+                    </div>
+
+
+                    <!-- subject block -->
+                    <div class="col-7 shadowhover"
+                        style="background-color: white; margin-left:20px; width:740px; height:auto;">
+                        <div class="form-group">
+                            <label class="mt-3" style="color: black;">Subject</label>
+                            <input class="form-control mt-1 square-border" style="height:35px"
+                                id="exampleFormControlTextarea1" rows="3" ng-model="formData.subject"></input>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-10"></div>
+                                <div class="col-2">
+                                    <div class="btn-group mt-1" role="group" aria-label="Basic example">
+                                        <button type="button" ng-click="bar = !bar"
+                                            ng-class="{'btn btn-info': bar,'btn btn-light': !bar}">Cc</button>
+                                        <button type="button" ng-click="bar2 = !bar2"
+                                            ng-class="{'btn btn-light': !bar2, 'btn btn-info': bar2}">Bcc</button>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 mt-1" ng-show="bar">
+                                    <label style="color: black;">Cc</label>
+                                    <input class="form-control square-border" style="height: 35px;"
+                                        placeholder="Cc"></input>
+                                </div>
+                                <div class="form-group col-12 mt-1" ng-show="bar2">
+                                    <label style="color: black;">Bcc</label>
+                                    <input class="form-control square-border" style="height: 35px;"
+                                        placeholder="Bcc"></input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- description area -->
+                        <section>
+                            <div class="form-group">
+                                <label class="mt-3" style="color: black;">Description(Optional)</label>
+                                <!-- <textarea class="form-control mt-1 square-border" style="height:300px"
+                                id="exampleFormControlTextarea1" rows="3"></textarea> -->
+
+                                <!-- for rich input box -->
+                                <div>
+                                    <div class="toolbar mt-2">
+                                        <button ng-click="execCommand('bold')"><i class="fas fa-bold"></i></button>
+                                        <button ng-click="execCommand('italic')"><i class="fas fa-italic"></i></button>
+                                        <button ng-click="execCommand('underline')"><i
+                                                class="fas fa-underline"></i></button>
+                                        <button ng-click="execCommand('justifyLeft')"><i
+                                                class="fas fa-align-left"></i></button>
+                                        <button ng-click="execCommand('justifyCenter')"><i
+                                                class="fas fa-align-center"></i></button>
+                                        <button ng-click="execCommand('justifyRight')"><i
+                                                class="fas fa-align-right"></i></button>
+                                    </div>
+                                    <div class="editor2 form-control" contenteditable="true"
+                                        ng-model="formData.description"></div>
+                                </div>
+                                <!-- end of rick box -->
+                            </div>
+                        </section>
+
+
+
+                        <div class="row my-3">
+                            <div class="col-6">
+                                <div>
+                                    <input style="font-size:13px;" type="file" file-model="myFile" />
+                                    <!-- <button class="btn btn-secondary" style="height:30px; font-size:11px"
+                                        ng-click="uploadFile()">submit file</button> -->
+                                </div>
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-2">
+                                <button style="height:30px; font-size:11px;" type="submit"
+                                    class="btn btn-primary square-border" ng-click="submitdata()">Submit a
+                                    ticket</button>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- </section>
+        <section style="color: black;">
+            <ul>
+                <h1>Hai</h1>
+                <li ng-repeat="i in dataList">
+                    {{i.requestBySend}} - {{i.modeOfRequest}} - {{i.category}} - {{i.Priority}} - {{i.Group}} - {{i.Agent}}
+                    - {{i.subject}} - {{i.description}}
+                </li>
+            </ul>
+    
+           
+    
+        </section> -->
+    </div>
+
+</body>

@@ -1,0 +1,116 @@
+<!-- <div class="col-md-12" ng-controller="ProfileCtrl">
+
+
+</div> -->
+
+
+<style>
+    .user-info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .user-info h2 {
+        margin-bottom: 10px;
+    }
+
+    .user-info p {
+        margin-bottom: 0;
+    }
+
+    .timezone-info {
+        margin-bottom: 20px;
+    }
+
+    .timezone-info table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .timezone-info th,
+    .timezone-info td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .timezone-info th {
+        background-color: #f2f2f2;
+    }
+
+    .btn-group {
+        margin-bottom: 20px;
+    }
+
+    .btn-group button {
+        margin-right: 5px;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .footer a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    /*for pop*/
+
+    .popupbuttonopen {
+        position: absolute;
+        top: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popupbuttonclose {
+        position: absolute;
+        display: none;
+    }
+</style>
+
+<div ng-controller="ProfileCtrl">
+    <section class="right-align-section py-4" ng-class="{'popupbuttonopen':open,'popupbuttonclose':!open}" style=" width:433px; margin-left:911px;background-color:rgb(122, 10, 10);border-radius:5px; position:absolute;
+    margin-top:81px; z-index: 9999">
+        <div class="modal-body">
+            <div class="container">
+                <div style="position:absolute;right:11px;"><i style="color:black;" class="fa-regular fa-circle-xmark"
+                        ng-click="open=!open" type="button"></i></div>
+                <div>
+                    <img style="position:absolute;margin-left:274px;width:auto;height:80px"
+                        src="partial/upload/ijas.png" alt="">
+                </div>
+                <h2 style="color:black">Ijas</h2>
+                <p style="color:black">IjasIju@gmail.com</p>
+                <table class="table">
+                    <tr>
+                        <th>Portal Timezone</th>
+                        <td>(+04:00) Abu Dhabi</td>
+                    </tr>
+                    <tr>
+                        <th>Your Timezone</th>
+                        <td>(+05:30) Chennai</td>
+                    </tr>
+                </table>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary"><i class="fas fa-key"></i> Change
+                        Password</button>
+                    <button type="button" class="btn btn-primary"><i class="fas fa-user"></i> My Profile</button>
+                    <button type="button" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Sign
+                        Out</button>
+                </div>
+                <div class="footer" style="color:black">
+                    <a style="color:black" href="#">Privacy Policy</a> | <a style="color:black" href="#">End User
+                        Notice</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

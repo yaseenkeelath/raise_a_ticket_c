@@ -1,0 +1,106 @@
+
+<style>
+    body {
+        margin: 0;
+        background-color: rgb(255, 255, 255);
+    }
+
+
+    .main {
+        width: 351px;
+        margin: auto;
+        background-color: rgb(250, 250, 252);
+        height: 347px;
+        margin-top: 40px;
+        border-radius: 3px;
+    }
+
+    .word {
+        font-size: 30px;
+        font-weight: 500;
+        margin-top: 40px;
+    }
+
+    .shadowhover {
+        transition: all 150ms ease-in-out;
+        border-radius: 8px;
+        box-shadow: 0px 8px 18px rgb(110, 110, 110);
+    }
+
+    .shadowhover:hover {
+        box-shadow: 0px 8px 38px black;
+    }
+</style>
+
+<!-- navbar for login -->
+<div ng-controller="LoginCtrl">
+    <section>
+        <div id="background">
+            <nav class="navbar bg-primary navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-white d-flex" style="margin-top:2px" ui-sref="raiseAticket">
+                        <div class="fw-bold">raise</div>
+                        <div>a</div>
+                        <div class="fw-bold">ticket</div>
+                        <span class="mx-2">|</span>
+                        <div>DOTS</div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <!-- Tickets Link -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="login">
+                                    <i class="bi bi-ticket fw-bold"></i> Login
+                                </a>
+                            </li>
+                            <!-- Resources Link -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="signup">
+                                    <i class="bi bi-journal fw-bold"></i> SignUp
+                                </a>
+                            </li>
+                            <!-- User Profile Popup -->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link btn text-white" ui-sref="creatTicket">
+                                    <i class="bi bi-journal fw-bold"></i> Create Ticket
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+</div>
+<!-- navbar for login end -->
+
+
+
+<body class="">
+    <div class="main  shadowhover" style="background-color: rgb(55, 124, 228);">
+        <p class="word text-center pt-5" style="font-family:inherit; color:rgb(248, 246, 246)">Login</p>
+        <form class="form ">
+            <div class="d-flex justify-content-center">
+                <input type="email" class="form-control my-3" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email" style="border: 1px ;
+        border-radius: 0; background-color:white;width:285px;">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button id="button" type="button" class="btn btn-primary "
+                    style="border:1px; border-radius:0; width:284px;background-color:rgb(15, 181, 231);color:white "
+                    onclick="location.href='password.html'">Submit</button>
+            </div>
+            </a>
+            <a class="end d-flex justify-content-center text-decoration-none" 
+                href="https://www.google.com/"
+                style="margin-top:15px; color:rgb(250, 250, 250);">Lost your Password?</a>
+            <div style="margin-top:59px;font-size:14px">
+                <a href="" class="d-flex justify-content-center" style="color:rgb(5, 5, 5);">End-User policy</a>
+            </div>
+    </div>
+</body>
